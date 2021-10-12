@@ -166,6 +166,32 @@
         "C:\\Users\\Aaron\\.nuget\\packages\\uipath.vision/2.2.0\\lib/net461/UiPath.Vision.dll"
       ],
       "Path": "C:\\Users\\Aaron\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.9"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.AspNet.WebApi.Client",
+        "Version": "5.2.7"
+      },
+      "Assemblies": [
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.client/5.2.7\\lib/net45/System.Net.Http.Formatting.dll",
+        "C:\\Users\\Aaron\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll"
+      ],
+      "Path": "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.AspNet.WebApi.Owin",
+        "Version": "5.2.7"
+      },
+      "Assemblies": [
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.client/5.2.7\\lib/net45/System.Net.Http.Formatting.dll",
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.core/5.2.7\\lib/net45/System.Web.Http.dll",
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.owin/5.2.7\\lib/net45/System.Web.Http.Owin.dll",
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.owin/2.0.2\\lib/net45/Microsoft.Owin.dll",
+        "C:\\Users\\Aaron\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll",
+        "C:\\Users\\Aaron\\.nuget\\packages\\owin/1.0.0\\lib/net40/Owin.dll"
+      ],
+      "Path": "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.owin\\5.2.7"
     }
   ],
   "Conflicts": [],
@@ -331,6 +357,44 @@
         {
           "Item1": "Newtonsoft.Json",
           "Item2": "[6.0.4, )"
+        }
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Client": {
+      "Id": "Microsoft.AspNet.WebApi.Client",
+      "Version": "5.2.7",
+      "Dependencies": [
+        {
+          "Item1": "Newtonsoft.Json",
+          "Item2": "[6.0.4, )"
+        }
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Core": {
+      "Id": "Microsoft.AspNet.WebApi.Core",
+      "Version": "5.2.7",
+      "Dependencies": [
+        {
+          "Item1": "Microsoft.AspNet.WebApi.Client",
+          "Item2": "[5.2.7, )"
+        }
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Owin": {
+      "Id": "Microsoft.AspNet.WebApi.Owin",
+      "Version": "5.2.7",
+      "Dependencies": [
+        {
+          "Item1": "Microsoft.AspNet.WebApi.Core",
+          "Item2": "[5.2.7, 5.3.0)"
+        },
+        {
+          "Item1": "Microsoft.Owin",
+          "Item2": "[2.0.2, )"
+        },
+        {
+          "Item1": "Owin",
+          "Item2": "[1.0.0, )"
         }
       ]
     },
@@ -598,6 +662,16 @@
       "Version": "4.14.0",
       "Dependencies": []
     },
+    "Microsoft.Owin": {
+      "Id": "Microsoft.Owin",
+      "Version": "2.0.2",
+      "Dependencies": [
+        {
+          "Item1": "Owin",
+          "Item2": "[1.0.0, )"
+        }
+      ]
+    },
     "Microsoft.Rest.ClientRuntime": {
       "Id": "Microsoft.Rest.ClientRuntime",
       "Version": "2.3.21",
@@ -632,6 +706,11 @@
           "Item2": "[1.0.0, )"
         }
       ]
+    },
+    "Owin": {
+      "Id": "Owin",
+      "Version": "1.0.0",
+      "Dependencies": []
     },
     "SharpZipLib": {
       "Id": "SharpZipLib",
@@ -1242,6 +1321,36 @@
     },
     {
       "Package": {
+        "Id": "Microsoft.AspNet.WebApi.Client",
+        "Version": "5.2.7"
+      },
+      "Assemblies": [
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\lib\\net45\\System.Net.Http.Formatting.dll"
+      ],
+      "Path": "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.AspNet.WebApi.Core",
+        "Version": "5.2.7"
+      },
+      "Assemblies": [
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.7\\lib\\net45\\System.Web.Http.dll"
+      ],
+      "Path": "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.7"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.AspNet.WebApi.Owin",
+        "Version": "5.2.7"
+      },
+      "Assemblies": [
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.owin\\5.2.7\\lib\\net45\\System.Web.Http.Owin.dll"
+      ],
+      "Path": "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnet.webapi.owin\\5.2.7"
+    },
+    {
+      "Package": {
         "Id": "Microsoft.AspNetCore.Connections.Abstractions",
         "Version": "3.1.6"
       },
@@ -1443,6 +1552,16 @@
     },
     {
       "Package": {
+        "Id": "Microsoft.Owin",
+        "Version": "2.0.2"
+      },
+      "Assemblies": [
+        "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.owin\\2.0.2\\lib\\net45\\Microsoft.Owin.dll"
+      ],
+      "Path": "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.owin\\2.0.2"
+    },
+    {
+      "Package": {
         "Id": "Microsoft.Rest.ClientRuntime",
         "Version": "2.3.21"
       },
@@ -1493,6 +1612,16 @@
         "C:\\Users\\Aaron\\.nuget\\packages\\npoi\\2.4.1\\lib\\net45\\NPOI.dll"
       ],
       "Path": "C:\\Users\\Aaron\\.nuget\\packages\\npoi\\2.4.1"
+    },
+    {
+      "Package": {
+        "Id": "Owin",
+        "Version": "1.0.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\Aaron\\.nuget\\packages\\owin\\1.0.0\\lib\\net40\\Owin.dll"
+      ],
+      "Path": "C:\\Users\\Aaron\\.nuget\\packages\\owin\\1.0.0"
     },
     {
       "Package": {

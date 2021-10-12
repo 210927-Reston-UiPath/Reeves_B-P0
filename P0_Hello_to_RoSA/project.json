@@ -3,6 +3,8 @@
   "description": "shopping for the client",
   "main": "Main.xaml",
   "dependencies": {
+    "Microsoft.AspNet.WebApi.Client": "[5.2.7]",
+    "Microsoft.AspNet.WebApi.Owin": "[5.2.7]",
     "UiPath.Excel.Activities": "[2.9.5]",
     "UiPath.Mail.Activities": "[1.9.5]",
     "UiPath.System.Activities": "[20.10.4]",
