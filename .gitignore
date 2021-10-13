@@ -278,5 +278,6 @@ AllDependencies.json
 PackageCache.json
 ProjectSettings.json
 references.db
+slnx.sqlite
 
 # Private test configuration and binaries.
