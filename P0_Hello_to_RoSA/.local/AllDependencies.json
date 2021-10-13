@@ -3635,15 +3635,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aaron\\.nuget\\packages\\": {}
+    "C:\\Users\\breev\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "P0_shopping list",
       "projectName": "P0_shopping list",
-      "projectPath": "C:\\revature\\Reeves_Lao-P0\\P0_Hello_to_RoSA\\.local",
-      "packagesPath": "C:\\Users\\Aaron\\.nuget\\packages\\",
-      "outputPath": "C:\\revature\\Reeves_Lao-P0\\P0_Hello_to_RoSA\\.local"
+      "projectPath": "C:\\Revature\\Reeves_Lao-P0\\P0_Hello_to_RoSA\\.local",
+      "packagesPath": "C:\\Users\\breev\\.nuget\\packages\\",
+      "outputPath": "C:\\Revature\\Reeves_Lao-P0\\P0_Hello_to_RoSA\\.local"
     },
     "frameworks": {
       "net461": {
@@ -3681,14 +3681,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Newtonsoft.Json 6.0.4' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
-      "libraryId": "Newtonsoft.Json"
-    }
-  ]
+  }
 }
