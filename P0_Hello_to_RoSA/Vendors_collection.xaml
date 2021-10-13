@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Vendors_collection" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1042.4,4118.4" sap2010:WorkflowViewState.IdRef="Vendors_collection_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Vendors_collection" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="810.4,1567.2" sap2010:WorkflowViewState.IdRef="Vendors_collection_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
       <x:String>System.Activities</x:String>
@@ -70,20 +70,20 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Vendors_collection" sap:VirtualizedContainerService.HintSize="1052.8,4053.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Vendors_collection" sap:VirtualizedContainerService.HintSize="695.2,1502.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1011.2,3960.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="vendor.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="653.6,1409.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="vendor.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="977.6,3851.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="620,1300" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="Add" />
               <Variable x:TypeArguments="x:String" Name="itemName" />
@@ -100,25 +100,26 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="936,295.2" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Hey, Boss&quot;+Environment.NewLine +&#xA;&quot;What Would You like to add to our Store?&quot;]" Options="[{&quot;Grocery&quot;,&quot;Clothing, Luggage &amp; Handbags&quot;,&quot;Electronics&quot;,&quot;Home&quot;,&quot;Others&quot;}]" Title="Add Supplies">
+            <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="578.4,295.2" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Hey, Boss&quot;+Environment.NewLine +&#xA;&quot;What Would You like to add to our Store?&quot;]" Options="[{&quot;Grocery&quot;,&quot;Clothing, Luggage &amp; Handbags&quot;,&quot;Electronics&quot;,&quot;Home&quot;,&quot;Others&quot;}]" Title="Add Supplies">
               <ui:InputDialog.Result>
                 <OutArgument x:TypeArguments="x:String">[Add]</OutArgument>
               </ui:InputDialog.Result>
             </ui:InputDialog>
-            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Add]" sap:VirtualizedContainerService.HintSize="936,3423.2" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Add]" sap:VirtualizedContainerService.HintSize="578.4,872" sap2010:WorkflowViewState.IdRef="Switch`1_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence x:Key="Grocery" sap:VirtualizedContainerService.HintSize="896,3143.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
+              <Sequence x:Key="Grocery" sap:VirtualizedContainerService.HintSize="538.4,592" sap2010:WorkflowViewState.IdRef="Sequence_25">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="854.4,295.2" sap2010:WorkflowViewState.IdRef="InputDialog_20" IsPassword="False" Label="Do you want to add on the existing item?" Options="[{&quot;New&quot;,&quot;Existing&quot;}]">
+                <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="496.8,295.2" sap2010:WorkflowViewState.IdRef="InputDialog_20" IsPassword="False" Label="Do you want to add on the existing item?" Options="[{&quot;New&quot;,&quot;Existing&quot;}]">
                   <ui:InputDialog.Result>
                     <OutArgument x:TypeArguments="x:String">[ItemToAdd]</OutArgument>
                   </ui:InputDialog.Result>
@@ -133,7 +134,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:InputDialog>
-                <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[ItemToAdd]" sap:VirtualizedContainerService.HintSize="854.4,2715.2" sap2010:WorkflowViewState.IdRef="Switch`1_5">
+                <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[ItemToAdd]" sap:VirtualizedContainerService.HintSize="496.8,164" sap2010:WorkflowViewState.IdRef="Switch`1_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
