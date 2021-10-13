@@ -274,10 +274,10 @@ Session.vim
 .vscode/
 
 # UIPath Log Files
-AllDependencies.json
-PackageCache.json
-ProjectSettings.json
-references.db
-slnx.sqlite
+*AllDependencies.json
+*PackageCache.json
+*ProjectSettings.json
+*references.db
+*slnx.sqlite
 
 # Private test configuration and binaries.
