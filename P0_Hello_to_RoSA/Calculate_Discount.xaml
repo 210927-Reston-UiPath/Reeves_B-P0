@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Calculate_Discount" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="2281.6,1497.6" sap2010:WorkflowViewState.IdRef="Calculate_Discount_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Calculate_Discount" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="2008.8,1497.6" sap2010:WorkflowViewState.IdRef="Calculate_Discount_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="28">
+    <scg:List x:TypeArguments="x:String" Capacity="56">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -29,10 +29,12 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -53,46 +55,163 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Calculate_Discount" sap:VirtualizedContainerService.HintSize="375.2,490.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Calculate_Discount" sap:VirtualizedContainerService.HintSize="597.6,1507.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="dtCustomer_Info" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtCustomer_order_Info" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtCustomer_Discounts" />
+      <Variable x:TypeArguments="x:String" Name="strTotalCost" />
+      <Variable x:TypeArguments="x:String" Name="strCustName" />
+      <Variable x:TypeArguments="x:String" Name="strCustEmail" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtTableDiscount" />
+      <Variable x:TypeArguments="x:Double" Name="dblDiscount" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="Read Client Name and Email" DataTable="[dtCustomer_Info]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,125.6" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A:B" SheetName="Sheet1" WorkbookPath="client.xlsx">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="556,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="OrderItems.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="x:String" x:Key="arg_str_TotalCost">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strTotalCost" />
+        </InOutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="arg_str_strName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strCustName" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="arg_str_strEmail">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strCustEmail" />
+        </OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="556,72.8" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Total Cost before discount &quot;+ strTotalCost +Environment.NewLine+&#xD;&#xA;&quot;Customer Name &quot;+strCustName +Environment.NewLine+&#xD;&#xA;&quot;Customer Email &quot;+ strCustEmail]" />
+    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="556,398.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:ReadRange>
-    <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="Read Client email and Total $$" DataTable="[dtCustomer_order_Info]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,125.6" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A1:A2" SheetName="Sheet1" WorkbookPath="Orders.xlsx">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:ReadRange>
-    <ui:JoinDataTables DataTable1="[dtCustomer_Info]" DataTable2="[dtCustomer_order_Info]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="333.6,63.2" sap2010:WorkflowViewState.IdRef="JoinDataTables_1" JoinType="Inner" OutputDataTable="[dtCustomer_Discounts]">
-      <ui:JoinDataTables.Arguments>
-        <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
-          <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
-            <ui:JoinOperationArgument.Column1>
-              <InArgument x:TypeArguments="x:String">["Email Address"]</InArgument>
-            </ui:JoinOperationArgument.Column1>
-            <ui:JoinOperationArgument.Column2>
-              <InArgument x:TypeArguments="x:String">["Email Address"]</InArgument>
-            </ui:JoinOperationArgument.Column2>
-          </ui:JoinOperationArgument>
-        </scg:List>
-      </ui:JoinDataTables.Arguments>
-    </ui:JoinDataTables>
+      <Switch x:TypeArguments="x:Double" DisplayName="Switch" Expression="[Convert.ToDouble(strTotalCost)]" sap:VirtualizedContainerService.HintSize="514.4,199.2" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+        <Switch.Default>
+          <Sequence sap:VirtualizedContainerService.HintSize="524.8,394.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If sap2010:Annotation.AnnotationText="Discount for Orders  $100.00 or less&#xD;&#xA;is 2%" Condition="[Convert.ToDouble(strTotalCost) &gt;0 and Convert.ToDouble(strTotalCost)&lt;=100]" sap:VirtualizedContainerService.HintSize="483.2,298.4" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Assign sap:VirtualizedContainerService.HintSize="265.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Double">[dblDiscount]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(strTotalCost)*.02]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Then>
+            </If>
+          </Sequence>
+        </Switch.Default>
+        <If x:Key="1" sap2010:Annotation.AnnotationText="Discount for Orders over $100.00 and &lt;= $200.00&#xA;is 2.5%" Condition="[Convert.ToDouble(strTotalCost) &gt;100 and Convert.ToDouble(strTotalCost)&lt;=200]" sap:VirtualizedContainerService.HintSize="483.2,276" sap2010:WorkflowViewState.IdRef="If_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="265.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Double">[dblDiscount]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(strTotalCost)*.025]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <If x:Key="2" sap2010:Annotation.AnnotationText="Discount for Orders over $200.00 and &lt;= $500.00&#xA;is 3.0% Orders over $500.00 are 3.5%" Condition="[Convert.ToDouble(strTotalCost) &gt;200 and Convert.ToDouble(strTotalCost)&lt;=500]" sap:VirtualizedContainerService.HintSize="575.2,276" sap2010:WorkflowViewState.IdRef="If_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="265.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Double">[dblDiscount]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(strTotalCost)*.03]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+          <If.Else>
+            <Assign sap:VirtualizedContainerService.HintSize="265.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Double">[dblDiscount]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(strTotalCost)*.035]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Else>
+        </If>
+      </Switch>
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="514.4,63.2" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Your Discount is: &quot; + dblDiscount.ToString]" />
+    </Sequence>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="556,696.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="475.2,615.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,519.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="Orders.xlsx">
+            <ui:ExcelApplicationScope.Body>
+              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                </ActivityAction.Argument>
+                <Sequence sap:VirtualizedContainerService.HintSize="375.2,406.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:WriteCell sap2010:Annotation.AnnotationText="Writes the text&quot;Sum of Order Cost&quot; to appropriate cell in Orders File" Cell="[&quot;F&quot;+ (count+1).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,176" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[strCustName]" Text="Sum of Total cost:" WorkbookPath="Orders.xlsx">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:WriteCell>
+                  <Sequence sap:VirtualizedContainerService.HintSize="333.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </Sequence>
+              </ActivityAction>
+            </ui:ExcelApplicationScope.Body>
+          </ui:ExcelApplicationScope>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
